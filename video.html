@@ -1,0 +1,59 @@
+<html>  
+  <head>  
+  <title>视频直播</title>  
+  <meta charset="utf-8">  
+  <link href="css/video.css" rel="stylesheet">  
+  <!-- If you'd like to support IE8 -->  
+  <script src="js/video_min.js"></script>  
+  <style>
+  	*{
+  		margin:0;
+  		padding:0;
+  	}
+  	.maxBox{
+  		width:50%;
+  	}
+  	.iframeBox{
+  		margin-top:20px;
+  		width:600px;
+  		height:300px;
+  		/*background-color:red;*/
+  	}
+  </style>
+</head>  
+<body>  
+	<div class="maxBox">
+		<h1>直播间</h1>  
+	 	<video id="my-video" class="video-js" controls preload="auto" width="640" height="300"  
+	 poster="images/haha.png" data-setup="{}">  
+	    <!--<source src="rtmp://live.hkstv.hk.lxdns.com/live/hks" type="rtmp/flv">-->  
+	    	<source src="rtmp://39.108.172.204/live/video" type="rtmp/flv" />
+	    	<!--<source src="rtmp://39.108.172.204/live/video" type="video/mp4" />-->
+	    <!-- 如果上面的rtmp流无法播放，就播放hls流 -->  
+	    <!-- <source src="http://10.10.5.119/live/livestream.m3u8" type='application/x-mpegURL'> -->  
+	    <p class="vjs-no-js">播放视频需要启用 JavaScript，推荐使用支持HTML5的浏览器访问。  
+	      To view this video please enable JavaScript, and consider upgrading to a web browser that  
+	      <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>  
+	    </p>  
+	 </video>  
+	</div>
+	<div class="iframeBox">
+		<iframe id="testIframe" frameborder="0" scrolling="no" src="http://www.baidu.com" width="100%" height="100%"></iframe>
+	</div>
+  
+ <script src="js/video.js"></script>  
+ <script>
+   	//高度自适应
+var iframe = document.getElementById("testIframe");
+var iframeHeight = function() {    
+    var hash = window.location.hash.slice(1), h;
+    if (hash && /height=/.test(hash)) {
+        h = hash.replace("height=", "");
+        iframe.height = h;
+    }
+    setTimeout(iframeHeight, 100);
+};
+iframeHeight();
+ </script>
+</body>  
+</html> 
